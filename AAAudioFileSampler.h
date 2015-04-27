@@ -31,6 +31,7 @@ typedef struct AUGraphPlayer
 -(BOOL)loadAudioURLS:(NSArray*)fileURLArray;
 -(void)loadAUFilePlayers;
 -(void)playSample:(int)sampleInArray;
+-(void)stopSample:(int)sampleInArray;
 -(void)stopPlayers;
 -(void)stopAndClosePlayers;
 

@@ -46,19 +46,25 @@
 
 -(void)playSample:(int)sampleInArray
 {
-    //if its playing stop it
-    if(graphStarted[sampleInArray] == YES)
-    {
-        AUGraphStop(players[sampleInArray].graph);
-    }
+    //if it's playing, stop it first
+    [self stopSample:sampleInArray];
     
+    //prepare the file player
     PrepareFileAU(&players[sampleInArray]);
     
-    // start playing
+    //start playing
     CheckError(AUGraphStart(players[sampleInArray].graph),
                "AUGraphStart failed");
     graphStarted[sampleInArray] = YES;
     
+}
+
+-(void)stopSample:(int)sampleInArray
+{
+    if(graphStarted[sampleInArray] == YES)
+    {
+        AUGraphStop(players[sampleInArray].graph);
+    }
 }
 
 -(void)stopAndClosePlayers
