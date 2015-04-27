@@ -26,6 +26,6 @@ outputcd.componentSubType = kAudioUnitSubType_DefaultOutput;
 This class utilizes [Chris Adamson’s](https://github.com/invalidname) AUGraph File Player implementation and his handy CoreAudio error checking method. *Learning Core Audio* is a must-have if you’re just getting into this stuff.
 
 TODO:
-*move away from the array of player AUGraphs and instead have a single AUGraph will dynamically created FilePlayer nodes. Will likely require a Mixer node.
-*add error checking in ```loadAudioURLS:```
+* Move away from the array of player AUGraphs and instead have a single AUGraph will dynamically created FilePlayer nodes. Will likely require a Mixer node.
+* Add error checking/handling in ```loadAudioURLS:```
 
