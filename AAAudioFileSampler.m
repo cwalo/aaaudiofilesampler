@@ -32,7 +32,6 @@
     //load file for every AUFilePlayer
     for(int i = 0; i < numSamples; i++)
     {
-        //sampleURL = (__bridge CFURLRef)([NSURL fileURLWithPath:[audioResourceURLS objectAtIndex:i]]);
         CheckError(AudioFileOpenURL((__bridge CFURLRef)([NSURL fileURLWithPath:[audioResourceURLS objectAtIndex:i]]), kAudioFileReadPermission, 0, &players[i].inputFile), "AudioFileOpenURL failed");
         UInt32 propSize = sizeof(players[i].inputFormat);
         CheckError(AudioFileGetProperty(players[i].inputFile, kAudioFilePropertyDataFormat,
@@ -53,7 +52,6 @@
         AUGraphStop(players[sampleInArray].graph);
     }
     
-    //Float64 fileDuration = PrepareFileAU(&players[button]);
     PrepareFileAU(&players[sampleInArray]);
     
     // start playing
