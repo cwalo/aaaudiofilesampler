@@ -21,3 +21,6 @@ In use:
 * When finished, call ```stopAndClosePlayers```
 * To stop all audio, but keep everything in place call ```stopPlayers```
 
+
+This class utilizes Chris Adamson’s AUGraph File Player implementation and his handy CoreAudio error checking method. *Learning Core Audio* is a must-have if you’re just getting into this stuff.
+
