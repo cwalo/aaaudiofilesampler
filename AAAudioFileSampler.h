@@ -10,9 +10,7 @@
 #import <AudioToolbox/AudioToolbox.h>
 #import <CoreAudio/CoreAudio.h>
 
-static const int kNumSamples = 16;
-
-typedef struct AUGraphPlayer
+typedef struct MyAUGraphPlayer
 {
     AudioStreamBasicDescription inputFormat; // input file's data stream description
     AudioFileID					inputFile; // reference to your input file
@@ -20,13 +18,14 @@ typedef struct AUGraphPlayer
     AUGraph graph;
     AudioUnit fileAU;
     
-} AUGraphPlayer;
+} MyAUGraphPlayer;
 
 @interface AAAudioFileSampler : NSObject
 {
     NSArray *audioResourceURLS;
-    AUGraphPlayer players[kNumSamples];
-    BOOL graphStarted[kNumSamples];
+    int numSamples;
+    MyAUGraphPlayer *players;
+    BOOL *graphStarted;
 }
 
 -(BOOL)loadAudioURLS:(NSArray*)fileURLArray;

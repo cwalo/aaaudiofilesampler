@@ -16,6 +16,8 @@
     
     audioResourceURLS = fileURLArray;
     
+    numSamples = audioResourceURLS.count;
+    
     return TRUE;
 }
 
@@ -23,8 +25,12 @@
 
 -(void)loadAUFilePlayers
 {
+    //allocate memory for our File Players
+    players = (MyAUGraphPlayer *) malloc(numSamples*sizeof(MyAUGraphPlayer));
+    graphStarted = (BOOL *) malloc(numSamples*sizeof(BOOL));
+    
     //load file for every AUFilePlayer
-    for(int i = 0; i < kNumSamples; i++)
+    for(int i = 0; i < numSamples; i++)
     {
         //sampleURL = (__bridge CFURLRef)([NSURL fileURLWithPath:[audioResourceURLS objectAtIndex:i]]);
         CheckError(AudioFileOpenURL((__bridge CFURLRef)([NSURL fileURLWithPath:[audioResourceURLS objectAtIndex:i]]), kAudioFileReadPermission, 0, &players[i].inputFile), "AudioFileOpenURL failed");
@@ -54,12 +60,12 @@
     CheckError(AUGraphStart(players[sampleInArray].graph),
                "AUGraphStart failed");
     graphStarted[sampleInArray] = YES;
-
+    
 }
 
 -(void)stopAndClosePlayers
 {
-    for(int i = 0; i < kNumSamples; i++)
+    for(int i = 0; i < numSamples; i++)
     {
         AUGraphStop (players[i].graph);
         AUGraphUninitialize (players[i].graph);
@@ -68,17 +74,19 @@
     }
     
     audioResourceURLS = nil;
+    free(players);
+    free(graphStarted);
 }
 
 -(void)stopPlayers
 {
-    for(int i = 0; i < kNumSamples; i++)
+    for(int i = 0; i < numSamples; i++)
     {
         AUGraphStop (players[i].graph);
     }
 }
 
-void CreateMyAUGraph(AUGraphPlayer *player)
+void CreateMyAUGraph(MyAUGraphPlayer *player)
 {
     // create a new AUGraph
     CheckError(NewAUGraph(&player->graph),
@@ -123,7 +131,7 @@ void CreateMyAUGraph(AUGraphPlayer *player)
                "AUGraphInitialize failed");
 }
 
-double PrepareFileAU(AUGraphPlayer *player)
+double PrepareFileAU(MyAUGraphPlayer *player)
 {
     // tell the file player unit to load the file we want to play
     CheckError(AudioUnitSetProperty(player->fileAU, kAudioUnitProperty_ScheduledFileIDs,
