@@ -26,7 +26,7 @@
 -(void)loadAUFilePlayers
 {
     //allocate memory for our File Players
-    players = (MyAUGraphPlayer *) malloc(numSamples*sizeof(MyAUGraphPlayer));
+    players = (AUGraphPlayer *) malloc(numSamples*sizeof(AUGraphPlayer));
     graphStarted = (BOOL *) malloc(numSamples*sizeof(BOOL));
     
     //load file for every AUFilePlayer
@@ -86,7 +86,7 @@
     }
 }
 
-void CreateMyAUGraph(MyAUGraphPlayer *player)
+void CreateMyAUGraph(AUGraphPlayer *player)
 {
     // create a new AUGraph
     CheckError(NewAUGraph(&player->graph),
@@ -131,7 +131,7 @@ void CreateMyAUGraph(MyAUGraphPlayer *player)
                "AUGraphInitialize failed");
 }
 
-double PrepareFileAU(MyAUGraphPlayer *player)
+double PrepareFileAU(AUGraphPlayer *player)
 {
     // tell the file player unit to load the file we want to play
     CheckError(AudioUnitSetProperty(player->fileAU, kAudioUnitProperty_ScheduledFileIDs,

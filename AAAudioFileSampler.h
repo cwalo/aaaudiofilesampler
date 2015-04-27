@@ -10,7 +10,7 @@
 #import <AudioToolbox/AudioToolbox.h>
 #import <CoreAudio/CoreAudio.h>
 
-typedef struct MyAUGraphPlayer
+typedef struct AUGraphPlayer
 {
     AudioStreamBasicDescription inputFormat; // input file's data stream description
     AudioFileID					inputFile; // reference to your input file
@@ -18,13 +18,13 @@ typedef struct MyAUGraphPlayer
     AUGraph graph;
     AudioUnit fileAU;
     
-} MyAUGraphPlayer;
+} AUGraphPlayer;
 
 @interface AAAudioFileSampler : NSObject
 {
     NSArray *audioResourceURLS;
     int numSamples;
-    MyAUGraphPlayer *players;
+    AUGraphPlayer *players;
     BOOL *graphStarted;
 }
 
