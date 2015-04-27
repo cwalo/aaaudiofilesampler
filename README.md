@@ -15,9 +15,10 @@ outputcd.componentSubType = kAudioUnitSubType_DefaultOutput;
 In use:
 
 * Declare an instance of AAAudioFileSampler
-* Call ```loadAudioURLS```
+* Call ```loadAudioURLS:``` passing an array of audio file URLs
 * Call ```loadAUFilePlayers```
-* Play a sample by calling ```playSample```
+* Play a sample by calling ```playSample``` passing an integer for the desired sample.
+They will be in the same order passed in loadAudioURLS. 0 indexed!
 * When finished, call ```stopAndClosePlayers```
 * To stop all audio, but keep everything in place call ```stopPlayers```
 
