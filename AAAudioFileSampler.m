@@ -72,8 +72,18 @@
     }
     
     audioResourceURLS = nil;
-    free(players);
-    free(graphStarted);
+    
+    if(players != NULL)
+    {
+        free(players);
+        players = NULL;
+    }
+    
+    if(graphStarted != NULL)
+    {
+        free(graphStarted);
+        graphStarted = NULL;
+    }
 }
 
 -(void)stopPlayers
