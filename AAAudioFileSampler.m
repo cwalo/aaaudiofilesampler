@@ -32,7 +32,7 @@
     //load file for every AUFilePlayer
     for(int i = 0; i < numSamples; i++)
     {
-        CheckError(AudioFileOpenURL((__bridge CFURLRef)([NSURL fileURLWithPath:[audioResourceURLS objectAtIndex:i]]), kAudioFileReadPermission, 0, &players[i].inputFile), "AudioFileOpenURL failed");
+        CheckError(AudioFileOpenURL([NSURL fileURLWithPath:[audioResourceURLS objectAtIndex:i]].CFURLRef, kAudioFileReadPermission, 0, &players[i].inputFile), "AudioFileOpenURL failed");
         UInt32 propSize = sizeof(players[i].inputFormat);
         CheckError(AudioFileGetProperty(players[i].inputFile, kAudioFilePropertyDataFormat,
                                         &propSize, &players[i].inputFormat),
