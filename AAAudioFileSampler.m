@@ -32,7 +32,7 @@
     //load file for every AUFilePlayer
     for(int i = 0; i < numSamples; i++)
     {
-        CheckError(AudioFileOpenURL([NSURL fileURLWithPath:[audioResourceURLS objectAtIndex:i]].CFURLRef, kAudioFileReadPermission, 0, &players[i].inputFile), "AudioFileOpenURL failed");
+        CheckError(AudioFileOpenURL((__bridge CFURLRef _Nonnull)([NSURL fileURLWithPath:[audioResourceURLS objectAtIndex:i]]), kAudioFileReadPermission, 0, &players[i].inputFile), "AudioFileOpenURL failed");
         UInt32 propSize = sizeof(players[i].inputFormat);
         CheckError(AudioFileGetProperty(players[i].inputFile, kAudioFilePropertyDataFormat,
                                         &propSize, &players[i].inputFormat),
@@ -44,7 +44,7 @@
     }
 }
 
--(void)playSample:(int)sampleInArray
+-(void)playSample:(NSUInteger)sampleInArray
 {
     //if it's playing, stop it first
     [self stopSample:sampleInArray];
@@ -59,7 +59,7 @@
     
 }
 
--(void)stopSample:(int)sampleInArray
+-(void)stopSample:(NSUInteger)sampleInArray
 {
     if(graphStarted[sampleInArray] == YES)
     {

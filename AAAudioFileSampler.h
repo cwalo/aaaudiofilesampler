@@ -8,7 +8,6 @@
 
 #import <Foundation/Foundation.h>
 #import <AudioToolbox/AudioToolbox.h>
-#import <CoreAudio/CoreAudio.h>
 
 typedef struct AUGraphPlayer
 {
@@ -23,15 +22,15 @@ typedef struct AUGraphPlayer
 @interface AAAudioFileSampler : NSObject
 {
     NSArray *audioResourceURLS;
-    int numSamples;
+    NSUInteger numSamples;
     AUGraphPlayer *players;
     BOOL *graphStarted;
 }
 
 -(BOOL)loadAudioURLS:(NSArray*)fileURLArray;
 -(void)loadAUFilePlayers;
--(void)playSample:(int)sampleInArray;
--(void)stopSample:(int)sampleInArray;
+-(void)playSample:(NSUInteger)sampleInArray;
+-(void)stopSample:(NSUInteger)sampleInArray;
 -(void)stopPlayers;
 -(void)stopAndClosePlayers;
 
