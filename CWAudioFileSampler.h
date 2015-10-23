@@ -1,6 +1,6 @@
 //
-//  AAAudioFileSampler.h
-//  AACore
+//  CWAudioFileSampler.h
+//  CWCore
 //
 //  Created by Corey Walo on 4/26/15.
 //  Copyright (c) 2015 Corey Walo. All rights reserved.
@@ -19,7 +19,7 @@ typedef struct AUGraphPlayer
     
 } AUGraphPlayer;
 
-@interface AAAudioFileSampler : NSObject
+@interface CWAudioFileSampler : NSObject
 {
     NSArray *audioResourceURLS;
     NSUInteger numSamples;

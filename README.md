@@ -1,4 +1,4 @@
-##AAAudioFileSampler
+##CWAudioFileSampler
 
 I originally wrote this class for a drum machine app for iPad, but it could be utilized for any number of applications. 
 
@@ -6,7 +6,7 @@ In use:
 
 See https://github.com/cwalo/PHENOM-RBA for a project utilizing this class.
 
-* Declare an instance of AAAudioFileSampler
+* Declare an instance of CWAudioFileSampler
 * Call ```loadAudioURLS:``` passing an array of audio file URLs
 * Call ```loadAUFilePlayers```
 * Play a sample by calling ```playSample``` passing an integer for the desired sample.

@@ -1,14 +1,14 @@
 //
-//  AAAudioFileSampler.m
-//  AACore
+//  CWAudioFileSampler.m
+//  CWCore
 //
 //  Created by Corey Walo on 4/26/15.
 //  Copyright (c) 2015 Corey Walo. All rights reserved.
 //
 
-#import "AAAudioFileSampler.h"
+#import "CWAudioFileSampler.h"
 
-@implementation AAAudioFileSampler
+@implementation CWAudioFileSampler
 
 -(BOOL)loadAudioURLS:(NSArray*)fileURLArray
 {
