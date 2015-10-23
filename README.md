@@ -4,6 +4,8 @@ I originally wrote this class for a drum machine app for iPad, but it could be u
 
 In use:
 
+See https://github.com/cwalo/PHENOM-RBA for a project utilizing this class.
+
 * Declare an instance of AAAudioFileSampler
 * Call ```loadAudioURLS:``` passing an array of audio file URLs
 * Call ```loadAUFilePlayers```
